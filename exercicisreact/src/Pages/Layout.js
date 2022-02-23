@@ -1,28 +1,25 @@
 import { Outlet, Link } from "react-router-dom";
-import llista from "./llista/llista";
+import llista from "./llista";
+
 export default function Layout() {
   return (
     <>
       <header>Exercicis React</header>
-      <div class="HolyGrail-body">
-        <main class="HolyGrail-content">
+      <div className="HolyGrail-body">
+        <main className="HolyGrail-content">
           <Outlet />
         </main>
-        <nav class="HolyGrail-nav">
+        <nav className="HolyGrail-nav">
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="./">Home</Link>
             </li>
-            <li>
-              <Link to="./comptador">Comptador</Link>
-            </li>
-            <li>
-              <Link to="./graella">Graella de fotos</Link>
-            </li>
-            {llista}
+            {llista.map ((item) =><li>
+              <Link to={item.path}>{item.titol}</Link>
+            </li> )}
           </ul>
         </nav>
-        <aside class="HolyGrail-ads">…</aside>
+        <aside className="HolyGrail-ads">…</aside>
       </div>
       <footer>by Isabel Navarro</footer>
     </>
