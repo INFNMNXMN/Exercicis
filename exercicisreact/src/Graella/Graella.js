@@ -1,5 +1,6 @@
 import "./Graella.css";
-function Graella() {
+import { useState } from "react";
+/*function Paella() {
   return (
     <>
       <h1>GRAELLA</h1>
@@ -56,6 +57,36 @@ function Graella() {
       </div>
     </>
   );
-}
+}*/
+export default function Graella() {
+  const fotos = [
+    "foto1.jpg",
+    "foto2.jpg",
+    "foto3.jpg",
+    "foto4.jpg",
+    "foto5.jpg",
+    "foto6.jpg",
+    "foto7.jpg",
+    "foto8.jpg",
+  ];
+  const [gran, setGran] = useState(false);
 
-export default Graella;
+  if (gran)
+    return (
+      <div className="Graella-zoom">
+        <img src={gran} alt="menu" onClick={() => setGran(false)} />
+      </div>
+    );
+  return (
+    <div className="Graella">
+      {fotos.map((foto) => (
+        <img
+          key={foto}
+          src={foto}
+          alt="menu"
+          onClick={() => setGran(foto)}
+        ></img>
+      ))}
+    </div>
+  );
+}
